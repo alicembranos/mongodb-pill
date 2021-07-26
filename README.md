@@ -1,35 +1,28 @@
-`#technology1` `#technology2` `#technology3` `#master-in-software-engineering`
+`#mongodb` `#database` `#nrdb` `#master-in-software-engineering`
 
-# Pill/Project title <!-- omit in toc -->
+# MongoDB Pill <!-- omit in toc -->
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> Brief explanation of the purpose of this project, which is what they are going to create, the objective of carrying out this project, ...
+> The purpose of this project is to learn the basics of MongoDB for modeling, storing, retrieving and updating data.
 >
-> You can separate the explanation in different paragraphs, use all the paragraphs that you need.
+> You will need to install the database engine and work locally.
 
 ## Index <!-- omit in toc -->
 
 - [Requirements](#requirements)
 - [Repository](#repository)
-- [Running the tests (optional)](#running-the-tests-optional)
-- [Deployment (optional)](#deployment-optional)
 - [Technologies used](#technologies-used)
 - [Project delivery](#project-delivery)
 - [Resources](#resources)
 
 ## Requirements
 
-**This section details the main requirements of the project that the student must take into account. Delete this message in the final version of this `README.md`.**
-
-**Here are some examples of project requirements:**
-
-- You must develop this project using a single HTML page
-- You cannot use third-party libraries
-- You must use semantic HTML5 elements for all the contents of the application
-- \---
+- Install MongoDB Community version engine locally from [here](https://www.mongodb.com/try/download/community).
+- Record your queries on a .js file.
+- Document your process on the README.md.
 
 ## Repository
 
@@ -39,71 +32,92 @@ To create a fork on GitHub is as easy as clicking the “fork” button on the r
 
 <img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
 
-### Installing (optional)
+### Installing 
 
-**Include this section only if the pill/project need a previous setup.**
+Go to the official MongoDB website and download the Community version of the engine from [here](https://www.mongodb.com/try/download/community).
 
-A step by step series of examples that tell you how to get a development env
-running
+#### On Windows:
+Execute the installer.
 
-Say what the step will be
+#### On UNIX / MacOS:
+Extract the content of the tgz file and move it to a directory on your PATH system variable:
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+```sh
+sudo cp /path/to/the/mongodb-directory/bin/* /usr/local/bin/
 ```
 
-End with an example of getting some data out of the system or using it for a
-little demo
+Check that the engine is properly installed with the following command on your teerminal
 
-## Running the tests (optional)
+```sh
+mongo --version
 
-**Include this section only if the pill/project has tests implemented.**
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+>> MongoDB shell version v5.0.0
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+Create a directory to store MongoDB Data
+```sh
+mkdir mongodb-data
 ```
 
-## Deployment (optional)
+Start the MongoDB server
+```sh
+mongod --dbpath mongodb-data
+```
 
-**Include this section only if the project needs to be deployed in a specific environment.**
+After some logs from the server, you should see a message like this:
+```sh
+{"t":{"$date":"2021-07-15T16:41:47.587+02:00"},"s":"I",  "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections","attr":{"port":27017,"ssl":"off"}}
+```
 
-Add additional notes about how to deploy this on a live system
+Start the database client on a diferent terminal
+```sh
+mongo
+```
+
+Create a new databse
+```sh
+use books
+```
+
+## Tasks
+Execute MongoDB queries for the following operations
+
+### Insert data
+1. Insert at least 3 authors with the following fields
+    - Name: String
+    - Last name: String
+    - Date of Birth: Date
+    - Date of death: Date
+    - Country: String
+
+2. Insert at least 10 books with the following fields:
+    - Title: String
+    - Release Year: [Date]
+    - Category: String
+    - Authors (id, name, lastName): [{id, name, lastName}, … ]
+
+### Update data
+1. Add a date of death to one Author
+2. Add a new release year to a book
+3. Change the title of a book adding (“New Edition”)
+
+### Get data
+1. Select all books
+2. Select all books for a given category
+3. Select all books published before 2002
+4. Select all books with more than one author
+5. Select all authors
+6. Select all death authors
+7. Select all authors born before 1990
+8. Select all authors from a given country
+
+### DELETE DATA
+1. Eliminate all the books for a given author
+2. Eliminate all the death authors
 
 ## Technologies used
 
-**This section details the technologies that are used within the project. Delete this message in the final version of this `README.md`.**
-
-**Here are some examples of technologies used:**
-
-\* HTML
-
-\* CSS
-
-\* JS
-
-\* LocalStorage
-
-\* ...
+\* MongoDB
 
 ## Project delivery
 
@@ -112,12 +126,7 @@ To deliver this project you must follow the steps indicated in the document:
 - [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
 
 ## Resources
-
-**This section include all the main resources that the students should check.**
-
-**Here are some examples of resources:**
-
-- [JavaScript HTML DOM](https://www.w3schools.com/js/js_htmldom.asp)
-- [JavaScript Dates](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Date)
-- [LocalStorage](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)
-- [...](...)
+- [Official MongoDB documentation](https://www.mongodb.com)
+- [W3Schools MongoDB](https://www.w3schools.in/mongodb/query-operations)
+- [MongoDB queries](https://docs.mongodb.com/manual/tutorial/query-documents/)
+- [MongoDB University](https://university.mongodb.com/)
